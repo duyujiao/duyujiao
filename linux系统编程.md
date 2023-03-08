@@ -72,6 +72,30 @@ ls abc/def
 
 
 
+**shell家族**
+
+shell命令解释器，根据输入的命令执行相应的命令
+
+查看当前系统下有哪些shell:
+
+cat /etc/shells
+
+查看当前系统正在使用的shell:
+
+echo $SHELL
+
+/bin/sh(已经被/bin/bash所取代)
+
+/bin/bash(就是linux默认的shell)
+
+/bin/ksh(Kornshell由AT&T Bell lab.发展出来的，兼容与bash)
+
+/bin/tcsh(整合C Shell,提供更多的功能)
+
+/bin/csh(已经被/bin/tcsh所取代)
+
+/bin/zsh(基于ksh发展出来的，功能更强大的shell)
+
 
 
 
