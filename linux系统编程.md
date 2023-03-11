@@ -96,7 +96,23 @@ echo $SHELL
 
 /bin/zsh(基于ksh发展出来的，功能更强大的shell)
 
+**创建修改用户和用户组**
 
+创建用户  sudo adduser 新用户名
+
+修改文件所属用户 sudo chown 新用户名 待修改文件名
+
+sudo chown wangwu a.c
+
+创建用户组 sudo addgroup 新组名
+
+修改文件所属用户组  sudo chgrp 新用户组名 待修改文件名
+
+sudo chgrp g88 a.c
+
+删除用户 sudo deluser wangwu
+
+删除用户组 sudo delgroup g88
 
 
 
