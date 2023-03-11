@@ -114,6 +114,28 @@ sudo chgrp g88 a.c
 
 删除用户组 sudo delgroup g88
 
+**find命令**
+
+-type按文件类型搜索
+
+-name按文件名搜索
+
+-maxdepth 指定搜索深度,应作为第一个参数出现
+
+eg:   find -maxdepth 2 -name '*.jpg'
+
+-size 按文件大小搜索  eg:find ./ -size +20M -size -50M
+
+​                                              ls -l -h ./.vscode/extensions/ms-vscode.cpptools-1.14.4-linux-x64/bin/cpptools
+
+-exec               find ./ -maxdepth 1 -type f -exec ls -l {} \;会执行ls -l操作    将find搜索的结果集执行某一命令
+
+-ok         以交互式的方式将find搜索的结果集执行某一命令
+
+
+
+
+
 
 
 
