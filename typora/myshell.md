@@ -160,3 +160,34 @@ void commodAnalsy(char *argv[], int number)
 
 ```
 
+```c
+char strpwd[MAX]; //用来存放上一次的路劲  实现 cd -
+void mycd(char *argv[])
+{
+  if (argv[1] == NULL)
+  {
+    getcwd(strpwd, sizeof(strpwd));
+    chdir("/home");
+  }
+  else if (strcmp(argv[1], "-") == 0)
+  {
+    char strpwd1[MAX];
+    getcwd(strpwd1, sizeof(strpwd));
+    chdir(strpwd);
+    printf("%s\n", strpwd);
+    strcpy(strpwd, strpwd1);
+  }
+  else if (strcmp(argv[1], "~") == 0)
+  {
+    getcwd(strpwd, sizeof(strpwd));
+    chdir("/home/gty");
+  }
+  else
+  {
+    getcwd(strpwd, sizeof(strpwd));
+    chdir(argv[1]);
+  }
+}
+
+```
+
