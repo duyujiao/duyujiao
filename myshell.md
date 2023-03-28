@@ -191,3 +191,51 @@ void mycd(char *argv[])
 
 ```
 
+```c
+void mydup(char *argv[])//>
+{
+  char *strc[MAX] = {NULL};
+  int i = 0;
+  while (strcmp(argv[i], ">"))
+  {
+    strc[i] = argv[i];
+    i++;
+  }
+  int number=i;//重定向前面参数的个数
+  int flag =isdo(argv, number);
+  i++;
+  //出现 echo "adcbe" > test.c  这种情况
+  int fdout = dup(1);                                   //让标准输出获取一个新的文件描述符
+  int fd = open(argv[i], O_WRONLY | O_CREAT | O_TRUNC,0666); //只写模式|表示如果指定文件不存在，则创建这个文件|表示截断，如果文件存在，并且以只写、读写方式打开，则将其长度截断为0。
+  dup2(fd, 1);
+  pid_t pid = fork();
+  if (pid < 0)
+  {
+    perror("fork");
+    exit(1);
+  }
+  else if (pid == 0) //子进程
+  {
+    // dup2(fd, 1);
+      if (flag == 3) //管道'|'含有管道
+      {
+        callCommandWithPipe(strc, number);
+      }
+      else
+       execvp(strc[0], strc);
+  }
+  else if (pid > 0)
+  {
+     if(pass==1)
+      {
+        pass=0;
+        printf("%d\n",pid);
+        return;
+      }
+    waitpid(pid, NULL, 0);
+  }
+  dup2(fdout, 1); //
+}
+
+```
+
