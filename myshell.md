@@ -279,6 +279,48 @@ void mydup2(char *argv[])//>>
   }
   dup2(fdout, 1); //
 }
+void mydup3(char *argv[])
+{
+  char *strc[MAX] = {NULL};
+  int i = 0;
+  while (strcmp(argv[i], "<"))
+  {
+    strc[i] = argv[i];
+    i++;
+  }
+  i++;
+  int number=i;//重定向前面参数的个数
+  int flag =isdo(argv, number);
+  int fdin = dup(0);                //让标准输出获取一个新的文件描述符
+  int fd = open(argv[i], O_RDONLY,0666); //只读模式
+   dup2(fd, 0);
+  pid_t pid = fork();
+  if (pid < 0)
+  {
+     if(pass==1)
+      {
+        pass=0;
+        printf("%d\n",pid);
+        return;
+      }
+    perror("fork");
+    exit(1);
+  }
+  else if (pid == 0) //子进程
+  {
+     if (flag == 3)  //管道'|'含有管道
+      {
+        callCommandWithPipe(strc, number);
+      }
+      else
+       execvp(strc[0], strc);
+  }
+  else if (pid > 0)
+  {
+    waitpid(pid, NULL, 0);
+  }
+  dup2(fdin, 0);
+}
 
 ```
 
