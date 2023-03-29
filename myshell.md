@@ -325,14 +325,6 @@ void mydup3(char *argv[])//<
 ```
 
 ```c
-void ShowHistory()
-{
-  int i = 0;
-  HIST_ENTRY **his;
-  his = history_list();
-  while (his[i] != NULL)
-    printf("%-3d   %s\n", i, his[i++]->line);
-}
 
 ```
 
