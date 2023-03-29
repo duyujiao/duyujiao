@@ -279,7 +279,7 @@ void mydup2(char *argv[])//>>
   }
   dup2(fdout, 1); //
 }
-void mydup3(char *argv[])
+void mydup3(char *argv[])//<
 {
   char *strc[MAX] = {NULL};
   int i = 0;
