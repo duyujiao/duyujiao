@@ -161,7 +161,7 @@ void commodAnalsy(char *argv[], int number)
 ```
 
 ```c
-char strpwd[MAX]; //用来存放上一次的路劲  实现 cd -
+char strpwd[MAX]; //用来存放上一次的路径 实现 cd -
 void mycd(char *argv[])
 {
   if (argv[1] == NULL)
