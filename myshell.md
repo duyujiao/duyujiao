@@ -13,7 +13,7 @@ void printname()//打印提示符
 ```
 
 ```c
-int main()//参数
+int main()//参数输入
 {
   read_history(NULL);
   signal(SIGINT, SIG_IGN);
