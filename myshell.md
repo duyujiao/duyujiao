@@ -112,7 +112,7 @@ void commodAnalsy(char *argv[], int number)
   {
     mydup(argv);
   }
-  else if (flag == 3) //管道'
+  else if (flag == 3) //管道'|'
   {
     callCommandWithPipe(argv, number);
   }
