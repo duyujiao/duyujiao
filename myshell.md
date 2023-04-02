@@ -58,7 +58,7 @@ int main()//参数输入
 ```
 
 ```c
-int isdo(char *argv[], int count)
+int isdo(char *argv[], int count)//解析
 {
   int flag = 10, i;
   if (argv[0] == NULL)
